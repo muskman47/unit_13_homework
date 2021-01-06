@@ -1,0 +1,51 @@
+{
+  "metadata": {
+    "schemaVersion": "1.0",
+    "importType": "LEX",
+    "importFormat": "JSON"
+  },
+  "resource": {
+    "description": "Risk Tolerance",
+    "name": "riskLevel",
+    "version": "2",
+    "enumerationValues": [
+      {
+        "value": "high",
+        "synonyms": [
+          "maximum"
+        ]
+      },
+      {
+        "value": "low",
+        "synonyms": [
+          "minimum"
+        ]
+      },
+      {
+        "value": "very high",
+        "synonyms": [
+          "very high"
+        ]
+      },
+      {
+        "value": "very low",
+        "synonyms": [
+          "very low"
+        ]
+      },
+      {
+        "value": "none",
+        "synonyms": [
+          "neutral"
+        ]
+      },
+      {
+        "value": "medium",
+        "synonyms": [
+          "middle"
+        ]
+      }
+    ],
+    "valueSelectionStrategy": "TOP_RESOLUTION"
+  }
+}

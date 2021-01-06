@@ -1,0 +1,149 @@
+{
+  "metadata": {
+    "schemaVersion": "1.0",
+    "importType": "LEX",
+    "importFormat": "JSON"
+  },
+  "resource": {
+    "name": "RecommendPortfolio",
+    "version": "13",
+    "fulfillmentActivity": {
+      "codeHook": {
+        "uri": "arn:aws:lambda:us-east-1:508797397313:function:recommendPortfolio",
+        "messageVersion": "1.0"
+      },
+      "type": "CodeHook"
+    },
+    "sampleUtterances": [
+      "I want to save money for my retirement",
+      "I'm {age} and I would like to invest for my retirement",
+      "I'm {age} and I want to invest for my retirement",
+      "I want the best option to invest for my retirement",
+      "I'm worried about my retirement",
+      "I want to invest for my retirement",
+      "I would like to invest for my retirement"
+    ],
+    "slots": [
+      {
+        "sampleUtterances": [],
+        "slotType": "AMAZON.NUMBER",
+        "obfuscationSetting": "NONE",
+        "slotConstraint": "Required",
+        "valueElicitationPrompt": {
+          "messages": [
+            {
+              "contentType": "PlainText",
+              "content": "How old are you?"
+            }
+          ],
+          "maxAttempts": 2
+        },
+        "priority": 2,
+        "name": "age"
+      },
+      {
+        "sampleUtterances": [],
+        "slotType": "AMAZON.US_FIRST_NAME",
+        "obfuscationSetting": "NONE",
+        "slotConstraint": "Required",
+        "valueElicitationPrompt": {
+          "messages": [
+            {
+              "contentType": "PlainText",
+              "content": "Thank you for trusting me to help, could you please give me your name?"
+            }
+          ],
+          "maxAttempts": 2
+        },
+        "priority": 1,
+        "name": "firstName"
+      },
+      {
+        "sampleUtterances": [],
+        "slotType": "AMAZON.NUMBER",
+        "obfuscationSetting": "NONE",
+        "slotConstraint": "Required",
+        "valueElicitationPrompt": {
+          "messages": [
+            {
+              "contentType": "PlainText",
+              "content": "How much do you want to invest?"
+            }
+          ],
+          "maxAttempts": 2
+        },
+        "priority": 3,
+        "name": "investmentAmount"
+      },
+      {
+        "sampleUtterances": [],
+        "slotType": "riskLevel",
+        "slotTypeVersion": "2",
+        "obfuscationSetting": "NONE",
+        "slotConstraint": "Required",
+        "valueElicitationPrompt": {
+          "messages": [
+            {
+              "contentType": "PlainText",
+              "content": "What level of investment risk would you like to take?"
+            }
+          ],
+          "responseCard": "{\"version\":1,\"contentType\":\"application/vnd.amazonaws.card.generic\",\"genericAttachments\":[{\"imageUrl\":\"https://cdn0.iconfinder.com/data/icons/minimal-set-four/32/minimal-21-512.png\",\"subTitle\":\"No risk at all\",\"title\":\"None\",\"buttons\":[{\"text\":\"None\",\"value\":\"none\"}]},{\"imageUrl\":\"https://cdn0.iconfinder.com/data/icons/faces-3/24/155-128.png\",\"subTitle\":\"Just a bit of risk\",\"title\":\"Very low or low\",\"buttons\":[{\"text\":\"Very low\",\"value\":\"very low\"},{\"text\":\"Low\",\"value\":\"low\"}]},{\"imageUrl\":\"https://cdn2.iconfinder.com/data/icons/emotions-26/64/Emotions_Happy_-_Excited-512.png\",\"subTitle\":\"Let's start getting wild\",\"title\":\"Medium\",\"buttons\":[{\"text\":\"Medium\",\"value\":\"medium\"}]},{\"imageUrl\":\"https://cdn3.iconfinder.com/data/icons/emoticon-back-white/16/emotion_b_w_Cool-2-512.png\",\"subTitle\":\"I have no fear!\",\"title\":\"High or Very High\",\"buttons\":[{\"text\":\"High\",\"value\":\"high\"},{\"text\":\"Very High\",\"value\":\"very high\"}]}]}",
+          "maxAttempts": 2
+        },
+        "priority": 4,
+        "name": "riskLevel"
+      }
+    ],
+    "dialogCodeHook": {
+      "uri": "arn:aws:lambda:us-east-1:508797397313:function:recommendPortfolio",
+      "messageVersion": "1.0"
+    },
+    "slotTypes": [
+      {
+        "description": "Risk Tolerance",
+        "name": "riskLevel",
+        "version": "2",
+        "enumerationValues": [
+          {
+            "value": "high",
+            "synonyms": [
+              "maximum"
+            ]
+          },
+          {
+            "value": "low",
+            "synonyms": [
+              "minimum"
+            ]
+          },
+          {
+            "value": "very high",
+            "synonyms": [
+              "very high"
+            ]
+          },
+          {
+            "value": "very low",
+            "synonyms": [
+              "very low"
+            ]
+          },
+          {
+            "value": "none",
+            "synonyms": [
+              "neutral"
+            ]
+          },
+          {
+            "value": "medium",
+            "synonyms": [
+              "middle"
+            ]
+          }
+        ],
+        "valueSelectionStrategy": "TOP_RESOLUTION"
+      }
+    ]
+  }
+}
